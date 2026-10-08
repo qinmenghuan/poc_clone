@@ -7,6 +7,7 @@ import { SignInModal } from '@/components/auth/sign-in-modal'
 import { AuthActions } from '@/components/navigation/auth-actions'
 import { MobileNavigation } from '@/components/navigation/mobile-navigation'
 import { NavigationLinks } from '@/components/navigation/navigation-links'
+import { ThemeToggle } from '@/components/theme/theme-toggle'
 
 export function Navbar() {
   const [isSignInOpen, setIsSignInOpen] = useState(false)
@@ -37,17 +38,23 @@ export function Navbar() {
             <NavigationLinks pathname={pathname} />
           </div>
 
-          <div className="hidden justify-self-end md:block">
+          <div className="hidden items-center justify-self-end gap-2 md:flex">
+            {/* Keep the homepage control immediately before the desktop sign-in action. */}
+            {pathname === '/' ? <ThemeToggle /> : null}
             <AuthActions onSignIn={openSignIn} />
           </div>
 
-          <MobileNavigation
-            isOpen={isMobileMenuOpen}
-            onClose={closeMobileMenu}
-            onOpenChange={setIsMobileMenuOpen}
-            onSignIn={openSignIn}
-            pathname={pathname}
-          />
+          <div className="flex items-center gap-1 md:hidden">
+            {/* On smaller screens the compact control remains reachable beside the menu trigger. */}
+            {pathname === '/' ? <ThemeToggle /> : null}
+            <MobileNavigation
+              isOpen={isMobileMenuOpen}
+              onClose={closeMobileMenu}
+              onOpenChange={setIsMobileMenuOpen}
+              onSignIn={openSignIn}
+              pathname={pathname}
+            />
+          </div>
         </div>
       </div>
 

@@ -6,6 +6,7 @@ import { ToastProvider } from '@/providers/toast-provider'
 import { WalletProvider } from '@/providers/wallet-provider'
 import { Footer } from '@/components/blocks/footer'
 import { Navbar } from '@/components/navigation/navbar'
+import { HomeThemeProvider } from '@/components/theme/home-theme-provider'
 
 const geistSans = localFont({
   src: '../public/fonts/GeistVF.woff',
@@ -40,9 +41,12 @@ export default function RootLayout({
         <ToastProvider>
           <AuthProvider>
             <WalletProvider>
-              <Navbar />
-              {children}
-              <Footer />
+              {/* The provider wraps shared chrome so the homepage header can host the toggle. */}
+              <HomeThemeProvider>
+                <Navbar />
+                {children}
+                <Footer />
+              </HomeThemeProvider>
             </WalletProvider>
           </AuthProvider>
         </ToastProvider>

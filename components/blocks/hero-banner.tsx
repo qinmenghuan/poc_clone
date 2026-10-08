@@ -32,9 +32,10 @@ const heroFeatures: HeroFeature[] = [
 
 function FeatureCard({ feature }: { feature: HeroFeature }) {
   return (
-    <div className="group relative h-full overflow-hidden rounded-2xl border border-white/10 bg-black/45 p-5 backdrop-blur-md transition-all hover:-translate-y-0.5 hover:border-brand/40 hover:bg-black/60">
+    // Semantic hooks let the light theme update this translucent card without changing dark mode.
+    <div className="home-hero-feature group relative h-full overflow-hidden rounded-2xl border border-white/10 bg-black/45 p-5 backdrop-blur-md transition-all hover:-translate-y-0.5 hover:border-brand/40 hover:bg-black/60">
       <div className="flex items-start gap-3">
-        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5">
+        <div className="home-hero-feature-icon flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5">
           <feature.icon className="h-[18px] w-[18px] text-brand" />
         </div>
         <div className="min-w-0">
@@ -52,7 +53,7 @@ function FeatureCard({ feature }: { feature: HeroFeature }) {
 
 export function HeroBanner() {
   return (
-    <section className="relative isolate -mt-[68px] overflow-hidden">
+    <section data-home-hero className="relative isolate -mt-[68px] overflow-hidden">
       <div className="absolute inset-0 -z-10">
         <Image
           src={HERO_BACKGROUND}
@@ -62,9 +63,19 @@ export function HeroBanner() {
           sizes="100vw"
           className="object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-surface-base/30 via-surface-base/45 to-surface-base" />
-        <div className="absolute inset-0 bg-gradient-to-r from-surface-base/60 via-surface-base/15 to-transparent" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,transparent_35%,theme(colors.surface.base)_92%)]" />
+        {/* Named overlays keep the dark composition intact and allow light mode to remove them. */}
+        <div
+          data-hero-overlay="vertical"
+          className="absolute inset-0 bg-gradient-to-b from-surface-base/30 via-surface-base/45 to-surface-base"
+        />
+        <div
+          data-hero-overlay="horizontal"
+          className="absolute inset-0 bg-gradient-to-r from-surface-base/60 via-surface-base/15 to-transparent"
+        />
+        <div
+          data-hero-overlay="radial"
+          className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,transparent_35%,theme(colors.surface.base)_92%)]"
+        />
       </div>
 
       <div className="mx-auto flex min-h-[78vh] w-full max-w-[92rem] flex-col px-6 pb-10 sm:px-10 lg:px-14 xl:px-20">
@@ -99,7 +110,7 @@ export function HeroBanner() {
               asChild
               size="lg"
               variant="outline"
-              className="h-11 rounded-full border-white/15 bg-white/5 px-6 text-sm font-semibold text-white backdrop-blur-md hover:bg-white/10 hover:text-white"
+              className="home-hero-secondary-action h-11 rounded-full border-white/15 bg-white/5 px-6 text-sm font-semibold text-white backdrop-blur-md hover:bg-white/10 hover:text-white"
             >
               <Link href="/properties">Browse Properties</Link>
             </Button>
