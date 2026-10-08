@@ -135,3 +135,226 @@ body {
   position: relative;
   margin-left: var(--slide-spacing);
 }
+
+/* Home-only theme. The data attribute is applied while the / route is mounted. */
+.home-theme {
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  min-height: 44px;
+  min-width: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid rgb(255 255 255 / 0.2);
+  border-radius: 9999px;
+  background: rgb(11 17 32 / 0.58);
+  padding: 0.625rem 0.875rem;
+  color: white;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  backdrop-filter: blur(12px);
+  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+.theme-toggle svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.theme-toggle:hover {
+  border-color: rgb(96 165 250 / 0.8);
+  background: rgb(30 41 59 / 0.82);
+}
+
+html[data-home-theme='light'] .theme-toggle {
+  border-color: #c8d5e6;
+  background: rgb(255 255 255 / 0.86);
+  color: #172033;
+}
+
+html[data-home-theme='light'] .theme-toggle:hover {
+  border-color: #60a5fa;
+  background: #ffffff;
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid #60a5fa;
+  outline-offset: 3px;
+}
+
+/* Light palette applies only while HomeThemeProvider marks the active homepage. */
+.home-theme[data-theme='light'] {
+  background: #f5f8fc;
+  color: #172033;
+}
+
+.home-theme[data-theme='light'] .bg-surface-base {
+  background-color: #f5f8fc !important;
+}
+
+.home-theme[data-theme='light'] .bg-surface-elevated {
+  background-color: #eaf0f8 !important;
+}
+
+.home-theme[data-theme='light'] section:not([data-home-hero]) .text-white,
+.home-theme[data-theme='light'] section:not([data-home-hero]) .text-gray-100 {
+  color: #172033 !important;
+}
+
+.home-theme[data-theme='light'] section:not([data-home-hero]) .text-gray-300,
+.home-theme[data-theme='light'] section:not([data-home-hero]) .text-gray-400 {
+  color: #526078 !important;
+}
+
+.home-theme[data-theme='light'] section:not([data-home-hero]) .text-gray-500 {
+  color: #71809a !important;
+}
+
+/* Explicit component hooks avoid changing matching cards on non-homepage routes. */
+.home-theme[data-theme='light'] .home-property-card {
+  border-color: #d9e2ef !important;
+  background: #ffffff !important;
+  box-shadow: 0 10px 24px rgb(30 64 110 / 0.07);
+}
+
+.home-theme[data-theme='light'] .home-property-card:hover {
+  border-color: #a9bfdd !important;
+  background: #ffffff !important;
+}
+
+.home-theme[data-theme='light'] .home-property-type-badge {
+  background: rgb(255 255 255 / 0.92) !important;
+  color: #172033 !important;
+  box-shadow: 0 2px 10px rgb(15 23 42 / 0.12);
+}
+
+.home-theme[data-theme='light'] .home-property-chain-badge {
+  background: rgb(236 253 245 / 0.94) !important;
+  color: #047857 !important;
+  box-shadow: 0 2px 10px rgb(6 78 59 / 0.1);
+}
+
+.home-theme[data-theme='light'] .home-property-card .divide-white\/10 {
+  --tw-divide-opacity: 1;
+  border-color: #d9e2ef;
+}
+
+.home-theme[data-theme='light'] .home-property-card .bg-white\/\[0\.06\] {
+  background-color: #e4ebf4;
+}
+
+.home-theme[data-theme='light'] .home-step-card {
+  background: rgb(255 255 255 / 0.78) !important;
+  box-shadow: 0 8px 20px rgb(30 64 110 / 0.05);
+}
+
+.home-theme[data-theme='light'] .home-step-card:hover {
+  background: #ffffff !important;
+}
+
+/* Reveal the original photograph in light mode while retaining a gentle transition to the page. */
+.home-theme[data-theme='light'] [data-home-hero] [data-hero-overlay='vertical'] {
+  background-image: linear-gradient(to bottom, rgb(255 255 255 / 0.04), rgb(255 255 255 / 0.08), #f5f8fc) !important;
+}
+
+.home-theme[data-theme='light'] [data-home-hero] [data-hero-overlay='horizontal'],
+.home-theme[data-theme='light'] [data-home-hero] [data-hero-overlay='radial'] {
+  background-image: none !important;
+}
+
+.home-theme[data-theme='light'] [data-home-hero] h1,
+.home-theme[data-theme='light'] [data-home-hero] .text-white,
+.home-theme[data-theme='light'] [data-home-hero] .text-white\/85 {
+  color: #172033 !important;
+  text-shadow: 0 1px 18px rgb(255 255 255 / 0.72);
+}
+
+.home-theme[data-theme='light'] [data-home-hero] .text-gray-300\/90,
+.home-theme[data-theme='light'] [data-home-hero] .text-gray-400 {
+  color: #3f4d65 !important;
+  text-shadow: 0 1px 14px rgb(255 255 255 / 0.62);
+}
+
+.home-theme[data-theme='light'] [data-home-hero] .bg-brand.text-white {
+  color: #ffffff !important;
+  text-shadow: none;
+}
+
+.home-theme[data-theme='light'] [data-home-hero] .home-hero-secondary-action {
+  border-color: rgb(23 32 51 / 0.2) !important;
+  background: rgb(255 255 255 / 0.82) !important;
+  color: #172033 !important;
+  text-shadow: none;
+}
+
+.home-theme[data-theme='light'] [data-home-hero] .home-hero-feature {
+  border-color: rgb(203 213 225 / 0.8) !important;
+  background: rgb(255 255 255 / 0.8) !important;
+  box-shadow: 0 8px 22px rgb(15 23 42 / 0.1);
+}
+
+.home-theme[data-theme='light'] [data-home-hero] .home-hero-feature:hover {
+  background: rgb(255 255 255 / 0.92) !important;
+}
+
+.home-theme[data-theme='light'] [data-home-hero] .home-hero-feature-icon {
+  border-color: #d9e2ef !important;
+  background: #eef4fb !important;
+}
+
+/* Shared chrome relies on the HTML marker because it is outside page-specific blocks. */
+html[data-home-theme='light'] nav {
+  border-color: rgb(148 163 184 / 0.28) !important;
+  background-color: rgb(245 248 252 / 0.82) !important;
+}
+
+html[data-home-theme='light'] nav .text-white,
+html[data-home-theme='light'] nav .text-gray-200,
+html[data-home-theme='light'] nav .text-gray-300 {
+  color: #172033 !important;
+}
+
+html[data-home-theme='light'] nav .hover\:text-white:hover {
+  color: #2563eb !important;
+}
+
+html[data-home-theme='light'] nav .bg-brand.text-white {
+  color: #ffffff !important;
+}
+
+html[data-home-theme='light'] nav [class*='bg-gray-900'] {
+  border-color: #d9e2ef !important;
+  background-color: rgb(255 255 255 / 0.96) !important;
+}
+
+html[data-home-theme='light'] footer {
+  border-color: #d9e2ef !important;
+  background-color: #eef3f9 !important;
+}
+
+html[data-home-theme='light'] footer .text-white,
+html[data-home-theme='light'] footer .text-gray-300 {
+  color: #172033 !important;
+}
+
+html[data-home-theme='light'] footer .text-gray-400 {
+  color: #526078 !important;
+}
+
+html[data-home-theme='light'] footer .text-gray-500 {
+  color: #71809a !important;
+}
+
+html[data-home-theme='light'] footer .border-white\/10 {
+  border-color: #d9e2ef !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-theme,
+  .theme-toggle {
+    transition: none;
+  }
+}

@@ -18,7 +18,7 @@ export function PropertyCard({ property }: PropertyCardProps) {
       href={`/properties/${property.id}`}
       className="group block rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/50 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-base"
     >
-      <article className="overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.03] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-white/15 hover:bg-white/[0.05]">
+      <article className="home-property-card overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.03] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-white/15 hover:bg-white/[0.05]">
         <div className="relative aspect-[4/3] overflow-hidden">
           <Image
             src={property.image}
@@ -33,11 +33,12 @@ export function PropertyCard({ property }: PropertyCardProps) {
           />
 
           <div className="absolute left-3 top-3 flex gap-1.5">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-black/55 px-2.5 py-1 text-[11px] font-medium text-white ring-1 ring-white/10 backdrop-blur-md">
+            {/* Dedicated badge hooks preserve contrast against imagery in light mode. */}
+            <span className="home-property-type-badge inline-flex items-center gap-1.5 rounded-full bg-black/55 px-2.5 py-1 text-[11px] font-medium text-white ring-1 ring-white/10 backdrop-blur-md">
               <TypeIcon className="h-3 w-3" aria-hidden="true" />
               {property.type}
             </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-black/55 px-2.5 py-1 text-[11px] font-medium text-emerald-200 ring-1 ring-emerald-400/30 backdrop-blur-md">
+            <span className="home-property-chain-badge inline-flex items-center gap-1.5 rounded-full bg-black/55 px-2.5 py-1 text-[11px] font-medium text-emerald-200 ring-1 ring-emerald-400/30 backdrop-blur-md">
               <ShieldCheck className="h-3 w-3" aria-hidden="true" />
               On-Chain
             </span>

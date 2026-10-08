@@ -43,9 +43,10 @@ export function HowItWorks() {
 
         <div className="mt-16 grid gap-6 md:grid-cols-3 lg:gap-8">
           {steps.map((step) => (
+            // The semantic class is scoped by the homepage provider's light-theme selector.
             <article
               key={step.title}
-              className="group rounded-2xl bg-white/[0.025] p-8 transition-colors hover:bg-white/[0.045]"
+              className="home-step-card group rounded-2xl bg-white/[0.025] p-8 transition-colors hover:bg-white/[0.045]"
             >
               <step.icon className="h-10 w-10 text-brand" strokeWidth={1.5} aria-hidden="true" />
               <h3 className="mt-7 text-xl font-semibold text-white">{step.title}</h3>
